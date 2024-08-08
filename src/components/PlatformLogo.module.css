@@ -1,0 +1,9 @@
+.platformLogo {
+    align-self: stretch;
+    width: 6.669rem;
+    position: relative;
+    max-height: 100%;
+    overflow: hidden;
+    flex-shrink: 0;
+    min-height: 2rem; 
+  }
