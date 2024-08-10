@@ -1,0 +1,16 @@
+.leftRightIconGroup {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-5xs);
+}
+
+.leftIcon,
+.rightIcon {
+  object-fit: contain;
+  height: 2.5rem;
+  width: 2.5rem;
+  position: relative;
+  min-height: 2.5rem;
+}

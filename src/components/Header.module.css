@@ -20,7 +20,7 @@
   align-items: flex-start;
   justify-content: space-between;
   max-width: 100%;
-  gap: var(--gap-xl);
+  gap: var(--gap-0);
 }
 .searchContainer {
   width: 75.5rem; 
