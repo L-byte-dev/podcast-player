@@ -38,12 +38,12 @@
 }
 
 .categoryTitle {
-    width: 17.375rem; 
+    max-width: 100%;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: var(--gap-xs);
+    gap: var(--gap-xs);    
 }
 
 .buttonGroup {
@@ -71,7 +71,7 @@
     font-family: var(--font-inter);
 }
 
-.instanceChild {
+.songPicture {
     height: 3rem; 
     width: 3rem; 
     position: relative;

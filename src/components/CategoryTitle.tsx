@@ -7,13 +7,15 @@ type Props = {
   
 function CategoryTitle({ title, subtitle}: Props) {
     return (
-        <div className={styles.container}>
-            <div className={styles.subtitle}>
-                {subtitle}
+        <div className={styles.categoryTitleInner}>
+            <div className={styles.container}>
+                <div className={styles.subtitle}>
+                    {subtitle}
+                </div>
+                <h1 className={styles.title}>
+                    {title}
+                </h1>
             </div>
-            <h1 className={styles.title}>
-                {title}
-            </h1>
         </div>
     );
 }
