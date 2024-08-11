@@ -6,13 +6,14 @@ type Props = {
     subtitle: string;
     children: ReactNode;
     className?: string; 
+    centeredText?: boolean;
 };
   
-function Card({ title, subtitle, children, className }: Props) {
+function Card({ title, subtitle, children, className, centeredText  }: Props) {
     return (
         <div className={className}>
             {children}
-            <div className={styles.container}>
+            <div className={centeredText ? styles.centered : styles.container}>
                 <b className={styles.title}>{title}</b>
                 <div>
                     <div className={styles.subtitle}>{subtitle}</div>

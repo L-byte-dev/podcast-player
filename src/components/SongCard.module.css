@@ -29,10 +29,6 @@
 }
 
 .categoryTitleGroup {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
     justify-content: space-between;
     gap: var(--gap-xl);
 }
@@ -41,7 +37,7 @@
     max-width: 100%;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: flex-start;
     gap: var(--gap-xs);    
 }

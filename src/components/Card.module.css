@@ -22,3 +22,12 @@
     display: inline-block;
     min-width: 2.6875rem;
 }
+
+.centered {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    flex-direction: column;
+    padding: var(--padding-10xs) 0 0;
+}

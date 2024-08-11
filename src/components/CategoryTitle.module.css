@@ -14,6 +14,10 @@
     line-height: 1.5rem;
 }
 
+.subtitle {
+    font-size: var(--font-size-base);
+}
+
 .title {
     margin: 0;
     font-size: var(--font-size-13xl);
