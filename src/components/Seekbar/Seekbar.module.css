@@ -1,0 +1,28 @@
+.barProgressed,
+.seeker {
+  position: absolute;
+  background-color: var(--color-red);
+}
+.barProgressed {
+  top: 0;
+  left: 0;
+  border-radius: var(--br-10xs);
+  width: 4.563rem;
+  height: 0.125rem;
+}
+.seeker {
+  top: -0.313rem;
+  left: 4.313rem;
+  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+  border-radius: 50%;
+  width: 0.75rem;
+  height: 0.75rem;
+  z-index: 1;
+}
+.seekbar {
+  align-self: stretch;
+  height: 0.125rem;
+  position: relative;
+  border-radius: var(--br-10xs);
+  background-color: var(--color-gray-200);
+}

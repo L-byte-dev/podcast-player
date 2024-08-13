@@ -1,6 +1,6 @@
-import AvatarIcon from "./AvatarIcon";
-import PlatformLogo from "./PlatformLogo";
-import SearchBar from "./SearchBar";
+import AvatarIcon from "../AvatarIcon/AvatarIcon";
+import PlatformLogo from "../PlatformLogo/PlatformLogo";
+import SearchBar from "../SearchBar/SearchBar";
 import styles from "./Header.module.css";
 
 function Header() {

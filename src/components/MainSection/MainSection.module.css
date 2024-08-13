@@ -1,0 +1,56 @@
+.main {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    max-width: 100%;
+    flex-direction: column;
+    width: 75.5rem; 
+    padding: 7rem 0 0 5rem;
+    box-sizing: border-box;
+    gap: 4rem; 
+    line-height: normal;
+    letter-spacing: normal;
+}
+
+.section {
+    align-self: stretch;
+    text-align: center;
+    font-size: var(--font-size-xs);
+    color: var(--light-white);
+    font-family: var(--font-inter);
+    flex-direction: column;
+    max-width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-5xl);
+}
+
+.categoryTitleGroup {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: var(--gap-xl);
+    align-items: flex-end;
+}
+
+.categoryTitle {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: var(--gap-xs);    
+}
+
+.buttonGroup {
+    width: 14.8125rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.3125rem 0; 
+    box-sizing: border-box;
+}

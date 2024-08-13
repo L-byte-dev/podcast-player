@@ -1,7 +1,4 @@
-import Card from "./Card";
-import CategoryTitle from "./CategoryTitle";
-import AvatarIcon from "./AvatarIcon";
-import LeftRightIcon from "./LeftRightIcon";
+import Card from "../Card/Card";
 import styles from "./ArtistCard.module.css"
 
 const ARTISTS = [
@@ -38,35 +35,22 @@ const ARTISTS = [
 ];
 
 function ArtistCard() {
-    return (
-        <section className={styles.songRowItem}>
-            <div className={styles.categoryTitleGroup}>
-              <div className={styles.categoryTitle}>
-                <AvatarIcon />
-                <CategoryTitle 
-                  title="Kanye West" subtitle="SIMILAR TO">
-                </CategoryTitle>
-              </div>
-              <div className={styles.buttonGroup}>
-                <LeftRightIcon />
-              </div>
-            </div>  
-            <div className={styles.songPlayingParent}>
-                {ARTISTS.map((artist) => {
-                    return (
-                        <Card key={artist.key} title={artist.name} subtitle= {artist.subs} className={styles.artistCard} centeredText={true}>
-                            <div className={styles.pictureContainer}>
-                            <img
-                                className={styles.artistPicture}
-                                src={artist.img}
-                            />
-                            </div>
-                        </Card>                            
-                    );
-                })}
+  return (
+    <div className={styles.artistCardConainter}>
+      {ARTISTS.map((artist) => {
+        return (
+          <Card key={artist.key} title={artist.name} subtitle= {artist.subs} className={styles.artistCard} centeredText={true}>
+            <div className={styles.pictureContainer}>
+              <img
+                  className={styles.artistPicture}
+                  src={artist.img}
+              />
             </div>
-        </section>
-)
+          </Card>                            
+        );
+      })}
+    </div>
+  )
 }
 
 export default ArtistCard;

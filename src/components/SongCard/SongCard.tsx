@@ -1,8 +1,4 @@
-import Card from "./Card";
-import CategoryTitle from "./CategoryTitle";
-import AvatarIcon from "./AvatarIcon";
-import Button from "./Button";
-import LeftRightIcon from "./LeftRightIcon";
+import Card from "../Card/Card";
 import styles from "./SongCard.module.css";
 
 const SONGS = [
@@ -106,32 +102,18 @@ const SONGS = [
 
 function SongCard() {
     return (
-            <section className={styles.songRowItem}>
-                <div className={styles.categoryTitleGroup}>
-                  <div className={styles.categoryTitle}>
-                    <AvatarIcon />
-                    <CategoryTitle 
-                      title="Quick picks" subtitle="START RADIO FROM A SONG">
-                    </CategoryTitle>
-                  </div>
-                  <div className={styles.buttonGroup}>
-                    <Button content="Play all"/>
-                    <LeftRightIcon />
-                  </div>
-                </div>  
-                <div className={styles.songPlayingParent}>
-                    {SONGS.map((song) => {
-                        return (
-                            <Card key={song.key} title={song.name} subtitle= {song.artist} className={styles.songCard}>
-                                <img
-                                    className={styles.songPicture}
-                                    src={song.img}
-                                />
-                            </Card>                            
-                        );
-                    })}
-                </div>
-            </section>
+      <div className={styles.songCardContainer}>
+          {SONGS.map((song) => {
+              return (
+                  <Card key={song.key} title={song.name} subtitle= {song.artist} className={styles.songCard}>
+                      <img
+                          className={styles.songPicture}
+                          src={song.img}
+                      />
+                  </Card>                            
+              );
+          })}
+      </div>
     )
 }
 
