@@ -1,0 +1,19 @@
+.button {
+    height: 2.5rem; 
+    width: 6.5rem; 
+    border-radius: var(--br-32xl);
+    border: 0.0625rem solid var(--light-white); 
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: var(--font-size-xs);
+    background-color: rgba(12, 9, 11, 1);
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--light-white);
+    letter-spacing: -0.01em;
+    line-height: 1.5rem; 
+    font-family: var(--font-inter);
+}

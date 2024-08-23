@@ -1,0 +1,36 @@
+.artistCardConainter {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 0 var(--padding-xl) 0 0;
+    gap: 1.5rem 1.4375rem; 
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--light-white);
+    font-family: var(--font-inter);
+}
+
+.artistCard {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 1.5rem var(--padding-12xs) 0; 
+    box-sizing: border-box;
+    position: relative;
+    gap: var(--gap-5xs);
+    min-width: 5rem; 
+    text-align: center;
+}
+
+.artistPicture {
+    height: 12.5rem; 
+    width: 12.5rem; 
+    position: relative;
+    border-radius: var(--br-231xl);
+    object-fit: cover;
+}

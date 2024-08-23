@@ -1,0 +1,7 @@
+.platformLogo {
+  width: 6.6rem;
+  height: 2rem;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}

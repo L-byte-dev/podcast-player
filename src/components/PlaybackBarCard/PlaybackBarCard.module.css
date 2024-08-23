@@ -1,0 +1,24 @@
+.songPicture {
+    height: 3rem;
+    width: 3rem;
+    position: relative;
+    object-fit: cover;
+    min-height: 3rem;
+}
+
+.playbackBarCard {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 28rem; 
+    overflow: hidden;
+    flex-shrink: 0;
+    flex-direction: row;
+    gap: var(--gap-5xs);
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--light-white);
+    font-family: var(--font-inter);
+    min-width: 16.563rem;
+    max-width: 100%;
+}

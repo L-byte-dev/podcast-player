@@ -1,0 +1,135 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 90rem;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  line-height: normal;
+  letter-spacing: normal;
+  z-index: 1000;
+}
+.actionButtons {
+  flex-direction: row;
+  gap: var(--gap-base);
+}
+.actionButtons,
+.actions,
+.titleContainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.actions {
+  flex-direction: column;
+  padding: var(--padding-xs) 0 0;
+}
+.titleContainer {
+  align-self: stretch;
+  flex-direction: row;
+  gap: var(--gap-5xs);
+  max-width: 100%;
+}
+.details,
+.cardContainer {
+  display: flex;
+  align-items: flex-start;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.details {
+  width: 31.313rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-10xs) 0 0;
+}
+.cardContainer {
+  flex: 1;
+  overflow: hidden;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 var(--padding-xl);
+  gap: var(--gap-5xs);
+  min-width: 42.188rem;
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--color-white);
+  font-family: var(--font-inter);
+}
+
+.skip {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-5xs) 0 0;
+}
+.time {
+  text-decoration: none;
+  position: relative;
+  line-height: 1.5rem;
+  color: inherit;
+  display: inline-block;
+  min-width: 4.313rem;
+}
+.skipButtons,
+.skipControls {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.skipButtons {
+  flex-direction: row;
+  gap: var(--gap-5xs);
+}
+.skipControls {
+  flex-direction: column;
+  padding: var(--padding-9xs) 0 0;
+}
+.footerInner,
+.skipControlsParent {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.skipControlsParent {
+  flex: 1;
+  flex-wrap: wrap;
+  padding: var(--padding-xs) 0;
+  gap: var(--gap-12xl);
+}
+.footerInner {
+  align-self: stretch;
+  background-color: var(--color-gray-100);
+  padding: 0 var(--padding-5xl);
+  mix-blend-mode: normal;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-gainsboro-200);
+  font-family: var(--font-inter);
+}
+.playbackButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-6xs);
+}
+.icons {
+    height: 2rem;
+    width: 2rem;
+    position: relative;
+    min-height: 2rem;
+}
+.optionsIcon {
+  height: 1.125rem;
+  width: 1.125rem;
+  position: relative;
+  min-height: 1.125rem;
+}
