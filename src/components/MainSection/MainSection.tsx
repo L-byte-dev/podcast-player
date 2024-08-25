@@ -49,7 +49,7 @@ function MainSection() {
                       </CategoryTitle>
                     </div>
                     <div className={styles.buttonGroup}>
-                      <Button content="Play all"/>
+                      <Button content="Play all" className={styles.button} />
                       <LeftRightIcon />
                     </div>
                   </div> 

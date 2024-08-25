@@ -1,10 +1,18 @@
+import { Dispatch } from "react";
 import styles from "./Sidebar.module.css";
+import Button from "../Button/Button";
 
 type Props = {
     isOpen: boolean;
+    setIsFormVisible: Dispatch<React.SetStateAction<boolean>>;
 };
 
-function Sidebar({ isOpen }: Props) {
+function Sidebar({ isOpen, setIsFormVisible }: Props) {
+
+    function handleClick() {
+        setIsFormVisible(true);
+    }
+    
     return (
         <section className={`${styles.sidebar} ${isOpen ? styles.open : styles.closed}`}>
             <div className={styles.sidebarExpandedAndCollapsed}>
@@ -46,15 +54,19 @@ function Sidebar({ isOpen }: Props) {
                     </div>
                         {isOpen && (
                             <div className={styles.playlistItems}>
-                                <button className={styles.button}>
-                                    <img
-                                        className={styles.iconForMenu}
-                                        loading="lazy"
-                                        alt="Home icon"
-                                        src="./home-icon.svg"
-                                    />
-                                        New playlist
-                                </button>
+                                <Button 
+                                    content="New playlist" 
+                                    icon={
+                                        <img
+                                            className={styles.iconForMenu}
+                                            loading="lazy"
+                                            alt="Home icon"
+                                            src="./home-icon.svg"
+                                        />
+                                    } 
+                                    onClick={handleClick}
+                                    className={styles.button}
+                                />
                             </div>
                         )}
                 </div>

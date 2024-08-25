@@ -54,3 +54,15 @@
     padding: 0.3125rem 0; 
     box-sizing: border-box;
 }
+
+.button {
+    height: 2.5rem; 
+    width: 6.5rem; 
+    border: 0.0625rem solid var(--light-white); 
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xs);
+    background-color: rgba(12, 9, 11, 1);
+}

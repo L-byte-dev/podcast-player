@@ -1,0 +1,75 @@
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 75.5rem;
+    box-sizing: border-box;
+    gap: 4rem;
+    line-height: normal;
+    letter-spacing: normal;
+    padding: 6rem 0 0 3rem;
+    font-size: var(--font-size-xs);
+    font-family: var(--font-inter);
+}
+
+.categoryTitle {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: var(--gap-xs);
+    color: var(--light-white);
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    gap: 5.5rem;
+}
+
+.formContainer {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3.3rem; 
+    color: var(--color-lavender);
+}
+
+.cardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-xs);
+    font-size: var(--font-size-base);
+    color: var(--light-white);
+    font-family: var(--font-inter);
+}
+
+.playlistCard {
+    width: 11.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-xs);
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--light-white);
+    font-family: var(--font-inter);
+    padding: 2rem 0;
+}
+
+img[src=""] {
+    visibility: hidden;
+}
+
+.playlistPicture {
+    width: 11.25rem;
+    height: 11.25rem;
+    position: relative;
+    border-radius: var(--br-9xs);
+    object-fit: cover;
+}

@@ -1,0 +1,83 @@
+.formContainer {
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 26.3rem;
+    align-items: flex-start;
+    gap: 5.5rem;
+    font-size: var(--font-size-xs);
+    color: var(--color-lavender);
+    font-family: var(--font-inter);
+    padding: 7rem 0 0 2rem;
+}
+
+.form {
+    margin: 0;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 1.9rem;
+}
+
+.inputForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-6xs);
+}
+
+.inputForm label {
+    color: var(--color-lavender);
+    font-size: var(--font-size-xs);
+    font-family: var(--font-inter);
+}
+
+.input {
+    border-radius: var(--br-5xs);
+    background-color: var(--color-gray-300);
+    border: 1px solid var(--color-gray-200);
+    padding: var(--padding-3xs) var(--padding-2xs);
+    width: 26rem;
+    color: var(--light-white);
+}
+
+.button {
+    cursor: pointer;
+    border: 0;
+    padding: var(--padding-xs);
+    background-color: var(--color-gray-100);
+    border-radius: var(--br-32xl);
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    font-family: var(--font-inter);
+    color: var(--light-white);
+    text-align: center;
+    align-self: center;
+    width: 200px;
+}
+
+.playlistCard {
+    width: 11.25rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: var(--gap-xs);
+    text-align: left;
+    font-size: var(--font-size-base);
+    color: var(--light-white);
+    font-family: var(--font-inter);
+    padding: 2rem 0;
+}
+
+img[src=""] {
+    visibility: hidden; 
+}
+
+.playlistPicture {
+    width: 11.25rem;
+    height: 11.25rem;
+    position: relative;
+    border-radius: var(--br-9xs);
+    object-fit: cover;
+}

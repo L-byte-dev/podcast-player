@@ -1,0 +1,13 @@
+.inputForm {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-6xs);
+}
+
+.input {
+    font-weight: 600;
+    font-family: var(--font-inter);
+    font-size: var(--font-size-sm);
+    letter-spacing: -0.01em;
+    line-height: 1.5rem; 
+}
