@@ -14,10 +14,10 @@ type Props = {
         description: string;
         imageUrl: string;
     }>>;
-    setIsFormVisible: Dispatch<React.SetStateAction<boolean>>;
+    handleSubmit: (event: FormEvent<HTMLFormElement>) => void; 
 };
 
-function CreatePlaylistForm({ formData, setFormData, setIsFormVisible }: Props) {
+function CreatePlaylistForm({ formData, setFormData, handleSubmit }: Props) {
 
     function handleChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         const { name, value } = event.target;
@@ -27,47 +27,42 @@ function CreatePlaylistForm({ formData, setFormData, setIsFormVisible }: Props) 
         });
     };
 
-    function handleSubmit(event: FormEvent<HTMLFormElement>) {
-        event.preventDefault();
-        setIsFormVisible(false); 
-    }
-
     const isFormComplete = formData.title && formData.description && formData.imageUrl;
 
     return (
         <form onSubmit={handleSubmit} className={styles.form} autoComplete="off">
 
             <Input 
-                label="Título" 
+                label="Title" 
                 name="title" 
                 id="title" 
                 type="text" 
-                placeholder="Título" 
+                placeholder="Title" 
                 value={formData.title} 
                 onChange={handleChange}
                 className={styles.input}
             />
             <Input 
-                label="Descripción" 
+                label="Description" 
                 name="description" 
                 id="description" 
                 type="text" 
-                placeholder="Descripción" 
+                placeholder="Description" 
                 value={formData.description} 
                 onChange={handleChange}
                 className={styles.input}
             />
             <Input 
-                label="Imagen (URL)" 
+                label="Image (URL)" 
                 name="imageUrl" 
                 id="image" 
                 type="text" 
-                placeholder="Imagen (URL)" 
+                placeholder="Image (URL)" 
                 value={formData.imageUrl} 
                 onChange={handleChange}
                 className={styles.input}
             />
-            <Button content="Agregar Playlist" type="submit" disabled={!isFormComplete} className={styles.button}/>
+            <Button content="Add Playlist" type="submit" disabled={!isFormComplete} className={styles.button}/>
         </form>
     );
 }

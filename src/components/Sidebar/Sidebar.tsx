@@ -1,13 +1,16 @@
 import { Dispatch } from "react";
 import styles from "./Sidebar.module.css";
 import Button from "../Button/Button";
+import { Playlist } from "../../Types";
+import PlaylistCard from "../PlaylistCard/PlaylistCard";
 
 type Props = {
     isOpen: boolean;
     setIsFormVisible: Dispatch<React.SetStateAction<boolean>>;
+    playlists: Playlist[];
 };
 
-function Sidebar({ isOpen, setIsFormVisible }: Props) {
+function Sidebar({ isOpen, setIsFormVisible, playlists }: Props) {
 
     function handleClick() {
         setIsFormVisible(true);
@@ -54,19 +57,22 @@ function Sidebar({ isOpen, setIsFormVisible }: Props) {
                     </div>
                         {isOpen && (
                             <div className={styles.playlistItems}>
-                                <Button 
-                                    content="New playlist" 
-                                    icon={
-                                        <img
-                                            className={styles.iconForMenu}
-                                            loading="lazy"
-                                            alt="Home icon"
-                                            src="./home-icon.svg"
-                                        />
-                                    } 
-                                    onClick={handleClick}
-                                    className={styles.button}
-                                />
+                                <div className={styles.buttonContainer}>
+                                    <Button 
+                                        content="New playlist" 
+                                        icon={
+                                            <img
+                                                className={styles.iconForMenu}
+                                                loading="lazy"
+                                                alt="Home icon"
+                                                src="./home-icon.svg"
+                                            />
+                                        } 
+                                        onClick={handleClick}
+                                        className={styles.button}
+                                    />
+                                </div>
+                                <PlaylistCard playlists={playlists} />
                             </div>
                         )}
                 </div>

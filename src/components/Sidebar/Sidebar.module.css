@@ -94,6 +94,9 @@
 .closed .item {
   flex-direction: column;
 }
+.buttonContainer {
+  padding: 1.75rem 0;
+}
 .button {
   border: 0;
   padding: var(--padding-xs) var(--padding-smi);
@@ -107,21 +110,36 @@
   color: inherit;
   width: 12.5rem;
   gap: var(--padding-xs);
-
 }
 .playlistItems {
   border-top: 0.031rem solid #D9D9D9;
   align-self: stretch;
   display: flex;
-  align-items: center;
+  flex-direction: column; 
+  align-items: flex-start; 
   justify-content: flex-start;
-  gap: var(--gap-11xs);
-  align-items: center;
-  justify-content: center;
-  padding: 1.75rem 0 0 0;
-  gap: var(--gap-9xs);
-  text-align: center;
+  gap: 1rem;
+  text-align: left; 
   width: 13.5rem;
 }
-  
-  
+.playlistCard {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 13.8rem; 
+  overflow: hidden;
+  flex-shrink: 0;
+  flex-direction: row;
+  gap: var(--gap-5xs);
+  text-align: left;
+  font-size: var(--font-size-base);
+  color: var(--light-white);
+  font-family: var(--font-inter);
+}
+.playlistPicture {
+  height: 3rem; 
+  width: 3rem; 
+  position: relative;
+  object-fit: cover;
+  min-height: 3rem;
+}
