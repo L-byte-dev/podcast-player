@@ -8,6 +8,10 @@
   padding: 5rem 1.5rem 0.063rem 0.063rem;
   line-height: normal;
   letter-spacing: normal;
+  height: 100%;
+  position: fixed;
+  z-index: 1;
+  background-color: rgba(12, 9, 11, 1);
 }
 .open {
   width: 14.5rem;

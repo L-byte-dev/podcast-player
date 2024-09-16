@@ -3,6 +3,7 @@ body {
   margin: 0;
   line-height: normal;
   background-color: rgba(12, 9, 11, 1);
+  height: 100%;
 }
 :root {
   --font-inter: Inter;

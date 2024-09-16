@@ -21,20 +21,24 @@ function App() {
     <>
       <Header toggleSidebar={toggleSidebar} />
       <div className={styles.mainLayout}>
-        <Sidebar
-          isOpen={isSidebarOpen}
-          setIsFormVisible={setIsFormVisible}
-          playlists={playlists}
-        />
-        {isFormVisible ? (
-          <CreatePlaylist
+        <div className={`${styles.sidebar} ${!isSidebarOpen ? styles.collapsed : ''}`}>
+          <Sidebar
+            isOpen={isSidebarOpen}
             setIsFormVisible={setIsFormVisible}
-            setPlaylists={setPlaylists}
             playlists={playlists}
           />
-        ) : (
-          <MainSection />
-        )}
+        </div>
+        <div className={`${styles.content} ${!isSidebarOpen ? styles.shifted : styles.full}`}> 
+          {isFormVisible ? (
+            <CreatePlaylist
+              setIsFormVisible={setIsFormVisible}
+              setPlaylists={setPlaylists}
+              playlists={playlists}
+            />
+          ) : (
+            <MainSection />
+          )}
+        </div>
       </div>
       <PlaybackBar />
     </>
