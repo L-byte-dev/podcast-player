@@ -47,3 +47,27 @@
   position: fixed;
   z-index: 1000;
 }
+
+.menuIcon {
+  height: 50%;
+  width: 75%;
+  position: absolute;
+  margin: 0;
+  top: 25%;
+  right: 12.5%;
+  bottom: 25%;
+  left: 12.5%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  z-index: 1;
+}
+.menu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+}

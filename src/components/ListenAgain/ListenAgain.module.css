@@ -3,9 +3,6 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-}
-
-.listenAgainContainer {
     overflow-x: hidden;
     max-width: 100%;
     font-size: var(--font-size-base);
@@ -19,6 +16,7 @@
 }
 
 .listenAgainCard {
+    flex: auto;
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -40,8 +38,8 @@
 
 .moreIcon {
     position: absolute;
-    top: 2rem;
-    right: 0.5rem; 
+    top: 6%;
+    right: 6%; 
     width: 1.5rem; 
     height: 1.5rem; 
     background-size: contain;
@@ -60,6 +58,8 @@
     align-items: flex-start;
     justify-content: flex-start;
     height: 180px;
+    position: relative;
+    max-width: 100%;
 }
 
 .playlistPicture {
@@ -72,8 +72,8 @@
 
 .playIcon {
     position: absolute;
-    bottom: 4rem; 
-    right: 0.75rem; 
+    bottom: 6%; 
+    right: 6%; 
     width: 2.5rem; 
     height: 2.5rem;
     background-size: cover;
