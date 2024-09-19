@@ -10,6 +10,7 @@ type Props = {
 };
   
 function Card({ title, subtitle, children, className, centeredText  }: Props) {
+
     return (
         <div className={className}>
             {children}

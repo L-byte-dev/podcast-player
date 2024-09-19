@@ -62,7 +62,9 @@ function CreatePlaylistForm({ formData, setFormData, handleSubmit }: Props) {
                 onChange={handleChange}
                 className={styles.input}
             />
-            <Button content="Add Playlist" type="submit" disabled={!isFormComplete} className={styles.button}/>
+            <Button type="submit" disabled={!isFormComplete} className={styles.button}>
+                Add Playlist
+            </Button>
         </form>
     );
 }

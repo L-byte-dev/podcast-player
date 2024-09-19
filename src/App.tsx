@@ -6,16 +6,24 @@ import Sidebar from './components/Sidebar/Sidebar.tsx';
 import CreatePlaylist from './components/CreatePlaylist/CreatePlaylist.tsx';
 import './index.css';
 import styles from './App.module.css';
-import { Playlist } from './Types.tsx';
+import { Playlist, Podcast } from './Types.tsx';
+import useToggle from './hooks/useToggle.tsx';
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const {value: isSidebarOpen, toggle: toggleSidebar} = useToggle(true);
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [playlists, setPlaylists] = useState<Array<Playlist>>([]);
+  const [currentPodcast, setCurrentPodcast] = useState<Podcast | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
-  function toggleSidebar() {
-    setIsSidebarOpen(!isSidebarOpen);
-  }
+  const playPodcast = (podcast: Podcast) => {
+    setCurrentPodcast(podcast);
+    setIsPlaying(true);
+  };
+
+  const togglePlayPause = () => {
+    setIsPlaying(!isPlaying);
+  };
 
   return (
     <>
@@ -36,11 +44,17 @@ function App() {
               playlists={playlists}
             />
           ) : (
-            <MainSection />
+            <MainSection playPodcast={playPodcast}/>
           )}
         </div>
       </div>
-      <PlaybackBar />
+      {currentPodcast && (
+        <PlaybackBar 
+          currentPodcast={currentPodcast}
+          isPlaying={isPlaying}
+          togglePlayPause={togglePlayPause}
+        /> 
+      )}
     </>
   );
 }

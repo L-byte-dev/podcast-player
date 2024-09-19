@@ -1,14 +1,30 @@
 import styles from "./PlaybackBarCard.module.css"
 import Card from "../Card/Card"
+import { Podcast } from "../../Types";
 
-function PlaybackBarCard() {
+type Props = {
+    currentPodcast: Podcast;
+}
+
+const MAX_TITLE_LENGTH = 40; 
+const MAX_DESCRIPTION_LENGTH = 40; 
+
+function truncateText(text: string, maxLength: number) {
+    if (text === undefined || text === null) {
+        return ''; 
+      }
+      return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;}
+
+function PlaybackBarCard({currentPodcast}: Props) {
+    const truncatedTitle = truncateText(currentPodcast.title, MAX_TITLE_LENGTH);
+    const truncatedDescription = truncateText(currentPodcast.description, MAX_DESCRIPTION_LENGTH);     
     return(
-        <Card title="Like a Rolling Stone" subtitle="Bob Dylan • 47M views • 306K likes" className={styles.playbackBarCard}>
+        <Card title={truncatedTitle} subtitle={truncatedDescription} className={styles.playbackBarCard}>
             <img
                 className={styles.songPicture}
                 loading="lazy"
-                alt=""
-                src="https://lh3.googleusercontent.com/TL2EK5rqsv4nf2Fe3keiVfvTALiMJmPmTjhtfPH_6P511Lan2gTIBNCwGv1B0jFuC6omHpPaKtd_F2A=w544-h544-l90-rj"
+                alt="Podcast cover"
+                src={currentPodcast.photo}
             />
         </Card>
     )
