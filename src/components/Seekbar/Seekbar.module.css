@@ -1,50 +1,30 @@
-.seekbar {
-  margin: 0;
-  padding: 0;
-  -webkit-appearance: none;
-  width: calc(100% + 0.75rem);
-  height: 0.125rem;
-  background-color: #ff0000;
-  border-radius: var(--br-10xs);
-  outline: none;
-  cursor: pointer;
-  position: relative;
-  box-sizing: border-box;
-  margin-left: 0.06rem; 
-}
-
-.seekbar::-webkit-slider-runnable-track {
+.timeline {
+  background-color: #494949;
+  height: 0.375rem;
   width: 100%;
-  height: 0.25rem;
-  background-color: #ff0000;
-  border-radius: var(--br-10xs);
+  position: relative;
+  cursor: pointer;
 }
 
-.seekbar::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 1rem;
+.timeline::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: var(--progress-position);
+  background-color: #ff0000;
+}
+
+.timeline .thumbIndicator {
+  position: absolute;
+  transform: translateX(-50%);
   height: 1rem;
+  width: 1rem;
+  top: -75%;
+  left: var(--progress-position);
   background-color: #ff0000;
-  border: 0.125rem solid #ff0000;
   border-radius: 50%;
   cursor: pointer;
-  margin-top: -0.375rem; 
-}
-
-.seekbar::-moz-range-thumb {
-  width: 0.75rem;
-  height: 0.75rem;
-  background-color: #ff0000;
-  border: 0.125rem solid #ff0000;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.seekbar::-webkit-slider-runnable-track {
-  background: linear-gradient(to right, #ff0000 0%, #ff0000 var(--seekbar-progress), #e0e0e0 var(--seekbar-progress));
-}
-
-.seekbar::-moz-range-progress {
-  background-color: #ff0000;
+  transition: transform 150ms ease-in-out;
 }

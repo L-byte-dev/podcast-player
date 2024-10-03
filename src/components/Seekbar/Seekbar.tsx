@@ -7,25 +7,27 @@ type Props = {
   onSeek: (time: number) => void;
 };
 
-function Seekbar({ currentTime, duration, onSeek }: Props) {
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = Number(e.target.value);
-    onSeek(newValue);
+const Seekbar = ({ currentTime, duration, onSeek }: Props) => {
+  const percent = duration ? (currentTime / duration) * 100 : 0;
+
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const clickPosition = e.clientX - rect.left;
+    const newTime = (clickPosition / rect.width) * duration;
+    onSeek(newTime);
   };
 
-  const progress = duration ? (currentTime / duration) * 100 : 0;
-
   return (
-    <input
-      type="range"
-      className={styles.seekbar}
-      min="0"
-      max={duration || 0}
-      value={currentTime}
-      onChange={handleChange}
-      style={{ '--seekbar-progress': `${progress}%` } as React.CSSProperties}
-    />
+    <div
+      className={styles.timeline}
+      onClick={handleClick}
+      style={{
+        '--progress-position': `${percent}%`,
+      } as React.CSSProperties}
+    >
+      <div className={styles.thumbIndicator} />
+    </div>
   );
-}
+};
 
 export default Seekbar;

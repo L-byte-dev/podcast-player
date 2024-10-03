@@ -7,21 +7,20 @@ import CategoryTitle from "../CategoryTitle/CategoryTitle.tsx"
 import LeftRightIcon from "../LeftRightIcon/LeftRightIcon.tsx"
 import Button from "../Button/Button.tsx"
 import styles from "./MainSection.module.css"
-import { AudioClip, Podcast } from "../../Types.tsx"
+import { AudioClip } from "../../Types.tsx"
 import useFetchData from "../../hooks/useFetchData.tsx"
 import Loading from "../Loading/Loading.tsx"
-
-type Props = {
-  playPodcast: (podcast: Podcast) => void;
-};
+import { useContext } from "react"
+import { PodcastContext } from "../../context/PlayPodcastProvider.tsx"
 
 const API_URL = 'https://api.audioboom.com/audio_clips';
 
-function MainSection({playPodcast}: Props) {
-  const { data: audioClips, isLoading } = useFetchData(API_URL, 5);
+function MainSection() {
+  const { data: audioClips, isLoading } = useFetchData(API_URL, 6);
+  const podcastContext = useContext(PodcastContext)
 
   function handleClick(clips: AudioClip) {
-    playPodcast({
+    podcastContext?.playPodcast({
         title: clips.title,
         description: clips.description,
         photo: clips.channel.urls.logo_image.original,

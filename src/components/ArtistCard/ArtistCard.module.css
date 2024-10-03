@@ -38,3 +38,21 @@
 .pictureContainer {
     border: none;
 }
+
+.playIcon {
+    position: absolute;
+    top: 45%; 
+    left: 50%;
+    transform: translate(-50%, -50%); 
+    width: 3rem; 
+    height: 3rem;
+    background-size: cover;
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+    background-color: rgba(0, 0, 0, 0.75); 
+    border-radius: 100%;
+}
+
+.artistCard:hover .playIcon {
+    opacity: 1; 
+}

@@ -9,6 +9,7 @@
     color: var(--light-white);
     font-family: var(--font-inter);
     gap: 1.5rem 1.4375rem; 
+    text-align: left;
 }
 
 .listenAgainContainer:hover {
@@ -26,6 +27,7 @@
     position: relative;
     gap: var(--gap-5xs);
     min-width: 5rem;
+    width: 100%;  
 }
 
 .picture {

@@ -4,7 +4,8 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    width: 100%;
+    overflow-x: hidden;
+    max-width: 100%;
     gap: 1.5rem 1.4375rem; 
     text-align: left;
     font-size: var(--font-size-base);
@@ -24,6 +25,7 @@
     position: relative;
     gap: var(--gap-5xs);
     min-width: 5rem; 
+    width: 100%;  
 }
 
 .albumPicture {

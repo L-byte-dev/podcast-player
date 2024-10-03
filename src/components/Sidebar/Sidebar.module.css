@@ -99,7 +99,7 @@
   flex-direction: column;
 }
 .buttonContainer {
-  padding: 1.75rem 0;
+  padding: 1.75rem 0 0rem 0;
 }
 .button {
   border: 0;

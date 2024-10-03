@@ -16,9 +16,7 @@ function Card({ title, subtitle, children, className, centeredText  }: Props) {
             {children}
             <div className={centeredText ? styles.centered : styles.container}>
                 <b className={styles.title}>{title}</b>
-                <div>
-                    <div className={styles.subtitle}>{subtitle}</div>
-                </div>
+                <p className={styles.subtitle}>{subtitle}</p>
             </div>
         </div>
     );
