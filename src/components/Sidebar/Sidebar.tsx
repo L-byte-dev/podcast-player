@@ -5,7 +5,7 @@ import { Playlist } from "../../Types";
 import PlaylistCard from "../PlaylistCard/PlaylistCard";
 
 type Props = {
-    isOpen: boolean;
+    isOpen: boolean | undefined;
     setIsFormVisible: Dispatch<React.SetStateAction<boolean>>;
     playlists: Playlist[];
 };
@@ -36,41 +36,37 @@ function Sidebar({ isOpen, setIsFormVisible, playlists }: Props) {
                             <img
                             className={styles.iconForMenu}
                             loading="lazy"
-                            alt="Home icon"
-                            src="./home-icon.svg"
+                            alt="Explore icon"
+                            src="./explore-icon.svg"
                             />
                             <div className={styles.homeParent}>
-                                <a className={styles.home}>Home</a>
+                                <a className={styles.home}>Explore</a>
                             </div>
                         </div>
                         <div className={styles.item}>
                             <img
                             className={styles.iconForMenu}
                             loading="lazy"
-                            alt="Home icon"
-                            src="./home-icon.svg"
+                            alt="Library icon"
+                            src="./library-icon.svg"
                             />
                             <div className={styles.homeParent}>
-                                <a className={styles.home}>Home</a>
+                                <a className={styles.home}>Library</a>
                             </div>
                         </div>
                     </div>
                         {isOpen && (
                             <div className={styles.playlistItems}>
                                 <div className={styles.buttonContainer}>
-                                    <Button 
-                                        content="New playlist" 
-                                        icon={
-                                            <img
-                                                className={styles.iconForMenu}
-                                                loading="lazy"
-                                                alt="Home icon"
-                                                src="./home-icon.svg"
-                                            />
-                                        } 
-                                        onClick={handleClick}
-                                        className={styles.button}
-                                    />
+                                    <Button onClick={handleClick} className={styles.button}>
+                                        <img
+                                            className={styles.iconForMenu}
+                                            loading="lazy"
+                                            alt="New playlist icon"
+                                            src="./new-playlist-icon.svg"
+                                        />
+                                        New Playlist
+                                    </Button>   
                                 </div>
                                 <PlaylistCard playlists={playlists} />
                             </div>

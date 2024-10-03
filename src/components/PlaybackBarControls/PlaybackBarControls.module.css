@@ -6,6 +6,16 @@
     padding: var(--padding-5xs) 0 0;
 }
 
+.controlButton {
+    background: none;
+    border: none; 
+    padding: 0; 
+    cursor: pointer;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
 .skipIcon {
     width: 1.5rem;
     height: 1.5rem;

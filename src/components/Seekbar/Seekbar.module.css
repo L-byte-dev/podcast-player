@@ -1,28 +1,50 @@
-.barProgressed,
-.seeker {
-  position: absolute;
-  background-color: var(--color-red);
-}
-.barProgressed {
-  top: 0;
-  left: 0;
-  border-radius: var(--br-10xs);
-  width: 4.563rem;
+.seekbar {
+  margin: 0;
+  padding: 0;
+  -webkit-appearance: none;
+  width: calc(100% + 0.75rem);
   height: 0.125rem;
+  background-color: #ff0000;
+  border-radius: var(--br-10xs);
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+  margin-left: 0.06rem; 
 }
-.seeker {
-  top: -0.313rem;
-  left: 4.313rem;
-  box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.25);
+
+.seekbar::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 0.25rem;
+  background-color: #ff0000;
+  border-radius: var(--br-10xs);
+}
+
+.seekbar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  background-color: #ff0000;
+  border: 0.125rem solid #ff0000;
   border-radius: 50%;
+  cursor: pointer;
+  margin-top: -0.375rem; 
+}
+
+.seekbar::-moz-range-thumb {
   width: 0.75rem;
   height: 0.75rem;
-  z-index: 1;
+  background-color: #ff0000;
+  border: 0.125rem solid #ff0000;
+  border-radius: 50%;
+  cursor: pointer;
 }
-.seekbar {
-  align-self: stretch;
-  height: 0.125rem;
-  position: relative;
-  border-radius: var(--br-10xs);
-  background-color: var(--color-gray-200);
+
+.seekbar::-webkit-slider-runnable-track {
+  background: linear-gradient(to right, #ff0000 0%, #ff0000 var(--seekbar-progress), #e0e0e0 var(--seekbar-progress));
+}
+
+.seekbar::-moz-range-progress {
+  background-color: #ff0000;
 }

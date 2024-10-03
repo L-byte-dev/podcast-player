@@ -5,6 +5,8 @@
     flex: 1;
     flex-direction: column;
     padding: var(--padding-10xs) 0 0;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .title,

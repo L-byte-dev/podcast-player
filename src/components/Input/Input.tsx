@@ -1,29 +1,21 @@
-import { ChangeEvent } from "react";
+import { ComponentProps } from "react";
 import styles from "./Input.module.css"
 
-type Props = {
+type Props = ComponentProps<"input"> & {
     label?: string;
-    id?: string;
-    name: string;
-    type: string;
-    value?: string;
-    onChange?: (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
-    placeholder?: string;
     className?: string;
 };
 
-function Input({ label, id, name, type, value, onChange, placeholder, className}: Props) {
+function Input({ label, className, ...delegated}: Props) {
+
+    const finalClassName = className ? `${styles.input} ${className}` : `${styles.input}`
+
     return(
         <div className={styles.inputForm}>
-            {label && <label htmlFor={id}>{label}:</label>}
+            {label && <label htmlFor={delegated.id}>{label}:</label>}
             <input
-                type={type}
-                id={id}
-                name={name}
-                value={value}
-                onChange={onChange}
-                placeholder={placeholder}
-                className={`${styles.input} ${className}`}
+                {...delegated}
+                className={finalClassName}
             />
         </div>
     )
