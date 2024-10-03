@@ -1,4 +1,5 @@
-.container {
+.container,
+.centered {
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -6,30 +7,37 @@
     flex-direction: column;
     padding: var(--padding-10xs) 0 0;
     white-space: nowrap;
+    width: 100%;
     overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
-.title,
-.subtitle {
-    position: relative;
-    letter-spacing: -0.01em;
+.container {
+    align-items: flex-start;
+}
+
+.centered {
+    align-items: center;
 }
 
 .title {
-    display: flex;
+    display: inline-block;
     align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    color: var(--light-white);
 }
 
 .subtitle {
     display: inline-block;
     min-width: 2.6875rem;
-}
-
-.centered {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex: 1;
-    flex-direction: column;
-    padding: var(--padding-10xs) 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: var(--color-gray-400);
 }

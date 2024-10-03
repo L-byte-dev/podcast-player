@@ -1,82 +1,80 @@
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import styles from './PlaybackBar.module.css';
 import Seekbar from '../Seekbar/Seekbar';
 import LikeDislikeControls from '../LikeDislikeControls/LikeDislikeControls';
 import PlaybackBarControls from '../PlaybackBarControls/PlaybackBarControls';
 import PlaybackBarCard from '../PlaybackBarCard/PlaybackBarCard';
-import { Podcast } from '../../Types';
+import { PodcastContext } from '../../context/PlayPodcastProvider';
 
-type Props = {
-  currentPodcast: Podcast;
-  isPlaying: boolean;
-  togglePlayPause: () => void;
-};
+function PlaybackBar() {
+  const podcastContext = useContext(PodcastContext)
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  
+  useEffect(() => {
+    const audioElement = audioRef.current;
+  
+    if (audioElement) {
+      setCurrentTime(0);
+      setDuration(0);
+  
+      const updateTime = () => setCurrentTime(audioElement.currentTime);
+      const updateDuration = () => setDuration(audioElement.duration);
+  
+      audioElement.addEventListener('timeupdate', updateTime);
+      audioElement.addEventListener('loadedmetadata', updateDuration);
+  
+      return () => {
+        audioElement.removeEventListener('timeupdate', updateTime);
+        audioElement.removeEventListener('loadedmetadata', updateDuration);
+      };
+    }
+  }, [podcastContext?.currentPodcast]); 
+  
 
-function PlaybackBar({ currentPodcast, isPlaying, togglePlayPause }: Props) {
-    const audioRef = useRef<HTMLAudioElement | null>(null);
-    const [currentTime, setCurrentTime] = useState(0);
-    const [duration, setDuration] = useState(0);
-  
-    useEffect(() => {
-      const audioElement = audioRef.current;
-    
-      if (audioElement) {
-        setCurrentTime(0);
-        setDuration(0);
-    
-        const updateTime = () => setCurrentTime(audioElement.currentTime);
-        const updateDuration = () => setDuration(audioElement.duration);
-    
-        audioElement.addEventListener('timeupdate', updateTime);
-        audioElement.addEventListener('loadedmetadata', updateDuration);
-    
-        return () => {
-          audioElement.removeEventListener('timeupdate', updateTime);
-          audioElement.removeEventListener('loadedmetadata', updateDuration);
-        };
-      }
-    }, [currentPodcast]); 
-    
-  
-    useEffect(() => {
-      const audioElement = audioRef.current;
-  
-      if (audioElement) {
-        if (isPlaying) {
-          audioElement.play();
-        } else {
-          audioElement.pause();
-        }
-      }
-    }, [isPlaying]);
-  
-    useEffect(() => {
-      const audioElement = audioRef.current;
-  
-      if (audioElement) {
-        audioElement.pause(); 
-        audioElement.currentTime = 0; 
-        setCurrentTime(0); 
-  
-        if (isPlaying) {
-          audioElement.play();
-        }
-      }
-    }, [currentPodcast]);
+  useEffect(() => {
+    const audioElement = audioRef.current;
 
-    const onSeek = (time: number) => {
-      const audioElement = audioRef.current;
-      if (audioElement) {
-        audioElement.currentTime = time;
-        setCurrentTime(time); 
+    if (audioElement) {
+      if (podcastContext?.isPlaying) {
+        audioElement.play();
+      } else {
+        audioElement.pause();
       }
-    };
+    }
+  }, [podcastContext?.isPlaying]);
+
+  useEffect(() => {
+    const audioElement = audioRef.current;
   
-    const formatTime = (seconds: number) => {
-      const minutes = Math.floor(seconds / 60);
-      const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
-      return `${minutes}:${secs}`;
-    };
+    if (audioElement) {
+      audioElement.pause(); 
+      audioElement.currentTime = 0; 
+      setCurrentTime(0); 
+      audioElement.load();
+  
+      if (podcastContext?.isPlaying) {
+        audioElement.play();
+      }
+    }
+  }, [podcastContext?.currentPodcast]);
+
+  const onSeek = (time: number) => {
+    const audioElement = audioRef.current;
+    if (audioElement) {
+      audioElement.currentTime = time;
+      setCurrentTime(time); 
+    }
+  };
+
+  const formatTime = (seconds: number) => {
+    const minutes = Math.floor(seconds / 60);
+    const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+    return `${minutes}:${secs}`;
+  };
+
+  if (!podcastContext?.currentPodcast) return null;
 
   return (
     <footer className={styles.footer}>
@@ -89,19 +87,19 @@ function PlaybackBar({ currentPodcast, isPlaying, togglePlayPause }: Props) {
         <div className={styles.skipControlsParent}>
           <div className={styles.skipControls}>
             <div className={styles.skipButtons}>
-              <PlaybackBarControls isPlaying={isPlaying} togglePlayPause={togglePlayPause} />
-              <audio ref={audioRef} id="audio-player" src={currentPodcast.audio} />
+              <PlaybackBarControls isPlaying={podcastContext.isPlaying} togglePlayPause={podcastContext.togglePlayPause} />
+              <audio ref={audioRef} id="audio-player" src={podcastContext.currentPodcast.audio} />
               <div className={styles.skip}>
-                <a className={styles.time}>
+                <p className={styles.time}>
                   {formatTime(currentTime)} / {formatTime(duration)}
-                </a>
+                </p>
               </div>
             </div>
           </div>
           <div className={styles.cardContainer}>
             <div className={styles.details}>
               <div className={styles.titleContainer}>
-                <PlaybackBarCard currentPodcast={currentPodcast} />
+                <PlaybackBarCard currentPodcast={podcastContext.currentPodcast} />
                 <div className={styles.actions}>
                   <div className={styles.actionButtons}>
                     <LikeDislikeControls />
@@ -133,9 +131,11 @@ function PlaybackBar({ currentPodcast, isPlaying, togglePlayPause }: Props) {
                 src="./volume-icon.svg"
               />
               <img
-                className={styles.icons}
+                className={styles.closeIcon}
+                onClick={() => podcastContext.setCurrentPodcast(null)}
+                title="Close Playbar"
                 loading="lazy"
-                alt="Arrow drop down"
+                alt="Close Playbar"
                 src="./arrow-drop-icon.svg"
               />
             </div>

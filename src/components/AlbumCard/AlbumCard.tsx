@@ -1,54 +1,72 @@
-import { AudioClip, Podcast } from "../../Types";
-import Button from "../Button/Button";
-import Card from "../Card/Card";
-import styles from "./AlbumCard.module.css";
+import { useContext } from 'react';
+import { AudioClip } from '../../Types';
+import Button from '../Button/Button';
+import Card from '../Card/Card';
+import styles from './AlbumCard.module.css';
+import { PodcastContext } from '../../context/PlayPodcastProvider';
 
 type Props = {
   handleClick: (clips: AudioClip) => void;
   filteredClips: AudioClip[];
 };
 
-const MAX_TITLE_LENGTH = 20; 
-const MAX_DESCRIPTION_LENGTH = 20; 
-
-function truncateText(text: string, maxLength: number) {
-  if (text === undefined || text === null) {
-    return ''; 
-  }
-  return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
-}
-
-function AlbumCard({handleClick, filteredClips}: Props) {
+function AlbumCard({ handleClick, filteredClips }: Props) {
+  const podcastContext = useContext(PodcastContext);
 
   return (
     <div className={styles.albumCardContainer}>
       {filteredClips.map((clips) => {
-        const truncatedTitle = truncateText(clips.title, MAX_TITLE_LENGTH);
-        const truncatedDescription = truncateText(clips.description, MAX_DESCRIPTION_LENGTH);     
+        const isCurrentPodcast =
+        podcastContext?.currentPodcast?.audio === clips.urls.high_mp3;
+
         return (
-          <Card key={clips.id} title={truncatedTitle} subtitle={truncatedDescription} className={styles.albumCard}>
-            <Button className={styles.pictureContainer} onClick={() => handleClick(clips)}>
+          <Card
+            key={clips.id}
+            title={clips.title}
+            subtitle={clips.description}
+            className={styles.albumCard}
+          >
+            <Button
+              className={styles.pictureContainer}
+            >
               <img
-                  className={styles.albumPicture}
-                  loading="lazy"
-                  src={clips.channel.urls.logo_image.original}
+                className={styles.albumPicture}
+                onClick={() => handleClick(clips)}
+                loading="lazy"
+                src={clips.channel.urls.logo_image.original}
               />
               <img
-                  className={styles.moreIcon}
-                  loading="lazy"
-                  src="./more-vert-icon.svg"
-                  />
+                className={styles.moreIcon}
+                loading="lazy"
+                src="./more-vert-icon.svg"
+              />
               <img
-                  className={styles.playIcon}
-                  loading="lazy"
-                  src="./playIcon.svg"
+                className={styles.playIcon}
+                onClick={() => {
+                  if (isCurrentPodcast) {
+                    podcastContext?.togglePlayPause();
+                  } else {
+                    handleClick(clips);
+                  }
+                }}
+                loading="lazy"
+                alt={
+                  isCurrentPodcast && podcastContext?.isPlaying
+                    ? 'Pause'
+                    : 'Play'
+                }
+                src={
+                  isCurrentPodcast && podcastContext?.isPlaying
+                    ? './pause-icon.svg'
+                    : './play-icon.svg'
+                }
               />
             </Button>
-          </Card>                            
+          </Card>
         );
       })}
     </div>
-  )
+  );
 }
 
 export default AlbumCard;

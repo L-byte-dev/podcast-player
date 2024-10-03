@@ -1,44 +1,66 @@
-import { AudioClip } from "../../Types";
-import Button from "../Button/Button";
-import Card from "../Card/Card";
-import styles from "./SongCard.module.css";
+import { useContext } from 'react';
+import { AudioClip } from '../../Types';
+import Button from '../Button/Button';
+import Card from '../Card/Card';
+import styles from './SongCard.module.css';
+import { PodcastContext } from '../../context/PlayPodcastProvider';
 
 type Props = {
   handleClick: (clips: AudioClip) => void;
   filteredClips: AudioClip[];
 };
 
-const MAX_TITLE_LENGTH = 20; 
-const MAX_DESCRIPTION_LENGTH = 20; 
+function SongCard({ handleClick, filteredClips }: Props) {
+  const podcastContext = useContext(PodcastContext);
 
-function truncateText(text: string, maxLength: number) {
-  if (text === undefined || text === null) {
-      return ''; 
-    }
-    return text.length > maxLength ? `${text.slice(0, maxLength)}...` : text;
-}
-
-function SongCard({handleClick, filteredClips}: Props) {
-     
   return (
     <div className={styles.songCardContainer}>
-        {filteredClips.map((clips) => {
-        const truncatedTitle = truncateText(clips.title, MAX_TITLE_LENGTH);
-        const truncatedDescription = truncateText(clips.description, MAX_DESCRIPTION_LENGTH); 
+      {filteredClips.map((clips) => {
+
+        const isCurrentPodcast =
+          podcastContext?.currentPodcast?.audio === clips.urls.high_mp3;
+
         return (
-          <Card key={clips.id} title={truncatedTitle} subtitle= {truncatedDescription} className={styles.songCard}>
-            <Button className={styles.songPictureButton} onClick={() => handleClick(clips)}>  
+          <Card
+            key={clips.id}
+            title={clips.title}
+            subtitle={clips.description}
+            className={styles.songCard}
+          >
+            <Button className={styles.songPictureButton}>
               <img
                 className={styles.songPicture}
+                onClick={() => handleClick(clips)}
                 loading="lazy"
                 src={clips.channel.urls.logo_image.original}
               />
+              <img
+                className={styles.playIcon}
+                onClick={() => {
+                  if (isCurrentPodcast) {
+                    podcastContext?.togglePlayPause();
+                  } else {
+                    handleClick(clips);
+                  }
+                }}
+                loading="lazy"
+                alt={
+                  isCurrentPodcast && podcastContext?.isPlaying
+                    ? 'Pause'
+                    : 'Play'
+                }
+                src={
+                  isCurrentPodcast && podcastContext?.isPlaying
+                    ? './pause-icon.svg'
+                    : './play-icon.svg'
+                }
+              />
             </Button>
-          </Card>                            
+          </Card>
         );
       })}
     </div>
-  )
+  );
 }
 
 export default SongCard;

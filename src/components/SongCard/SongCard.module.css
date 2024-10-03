@@ -44,3 +44,18 @@
     object-fit: cover;
     min-height: 3rem;
 }
+
+.playIcon {
+    position: absolute;
+    width: 2rem; 
+    height: 2rem;
+    background-size: cover;
+    opacity: 0; 
+    transition: opacity 0.3s ease; 
+    background-color: rgba(0, 0, 0, 0.75); 
+    border-radius: 100%;
+}
+
+.songCard:hover .playIcon {
+    opacity: 1; 
+}

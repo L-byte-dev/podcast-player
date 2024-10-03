@@ -2,8 +2,7 @@
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 90rem;
-  max-width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -11,10 +10,6 @@
   line-height: normal;
   letter-spacing: normal;
   z-index: 1000;
-}
-.actionButtons {
-  flex-direction: row;
-  gap: var(--gap-base);
 }
 .actionButtons,
 .actions,
@@ -38,10 +33,9 @@
   display: flex;
   align-items: flex-start;
   box-sizing: border-box;
-  max-width: 100%;
+  width: 100%;
 }
 .details {
-  width: 31.313rem;
   flex-direction: column;
   justify-content: flex-start;
   padding: var(--padding-10xs) 0 0;
@@ -50,8 +44,9 @@
   flex: 1;
   overflow: hidden;
   flex-direction: row;
-  justify-content: center;
-  padding: 0 var(--padding-xl);
+  justify-content: flex-start;
+  padding-left: var(--padding-xl);
+  padding-right: 200px;
   gap: var(--gap-5xs);
   min-width: 42.188rem;
   text-align: left;
@@ -66,6 +61,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   padding: var(--padding-5xs) 0 0;
+  width: 6rem;
 }
 .time {
   text-decoration: none;
@@ -73,8 +69,12 @@
   line-height: 1.5rem;
   color: inherit;
   display: inline-block;
-  min-width: 4.313rem;
+  width: 100%; 
+  margin: 0; 
+  padding: 0;
+  text-align: right; 
 }
+
 .skipButtons,
 .skipControls {
   display: flex;
@@ -117,19 +117,52 @@
 .playbackButtons {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: var(--gap-6xs);
+  align-items: center; 
+  justify-content: center;
+  gap: var(--gap-6xs); 
+  width: 100%;
 }
+
 .icons {
-    height: 2rem;
-    width: 2rem;
-    position: relative;
-    min-height: 2rem;
+  height: 2rem;
+  width: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  position: relative;
 }
 .optionsIcon {
-  height: 1.125rem;
-  width: 1.125rem;
+  height: 1.5rem;
+  width: 1.5rem;
   position: relative;
   min-height: 1.125rem;
+}
+.closeIcon {
+  height: 3rem;
+  width: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  position: relative;
+}
+.actionButtons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-base);
+}
+.skipControlsParent,
+.skipButtons {
+  display: flex;
+  align-items: center; 
+}
+.skipControlsParent {
+  justify-content: space-between; 
+}
+.icons, 
+.closeIcon, 
+.optionsIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
