@@ -69,8 +69,13 @@ function PlaybackBar() {
   };
 
   const formatTime = (seconds: number) => {
-    const minutes = Math.floor(seconds / 60);
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
     const secs = Math.floor(seconds % 60).toString().padStart(2, '0');
+  
+    if (hours > 0) {
+      return `${hours}:${minutes.toString().padStart(2, '0')}:${secs}`;
+    }
     return `${minutes}:${secs}`;
   };
 
@@ -137,6 +142,7 @@ function PlaybackBar() {
                 loading="lazy"
                 alt="Close Playbar"
                 src="./arrow-drop-icon.svg"
+                role="button"
               />
             </div>
           </div>

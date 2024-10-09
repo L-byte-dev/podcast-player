@@ -64,4 +64,5 @@
     justify-content: center;
     font-size: var(--font-size-xs);
     background-color: rgba(12, 9, 11, 1);
+    cursor: default;
 }

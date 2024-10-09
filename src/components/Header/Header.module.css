@@ -61,6 +61,7 @@
   overflow: hidden;
   max-height: 100%;
   z-index: 1;
+  cursor: pointer;
 }
 .menu {
   display: flex;

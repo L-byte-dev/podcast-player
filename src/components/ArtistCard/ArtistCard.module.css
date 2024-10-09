@@ -37,6 +37,7 @@
 
 .pictureContainer {
     border: none;
+    cursor: pointer;
 }
 
 .playIcon {

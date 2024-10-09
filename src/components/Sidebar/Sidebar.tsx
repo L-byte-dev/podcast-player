@@ -65,10 +65,12 @@ function Sidebar({ isOpen, setIsFormVisible, playlists }: Props) {
                                             alt="New playlist icon"
                                             src="./new-playlist-icon.svg"
                                         />
-                                        New Playlist
+                                        New playlist
                                     </Button>   
                                 </div>
-                                <PlaylistCard playlists={playlists} />
+                                <div className={styles.playlistScrollContainer}>
+                                    <PlaylistCard playlists={playlists} />
+                                </div>
                             </div>
                         )}
                 </div>

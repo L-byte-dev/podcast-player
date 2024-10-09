@@ -38,19 +38,6 @@
     object-fit: cover;
 }
 
-.moreIcon {
-    position: absolute;
-    top: 6%;
-    right: 6%; 
-    width: 1.5rem; 
-    height: 1.5rem; 
-    background-size: contain;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    background-color: rgba(0, 0, 0, 0.5); 
-    border-radius: 50%;
-}
-
 .playlistPicture {
     top: 0;
     left: 0;
@@ -63,6 +50,7 @@
     max-width: 100%;
     width: 19.75rem;
     border: none;
+    cursor: pointer;
 }
 
 .playIcon {
@@ -78,7 +66,6 @@
     border-radius: 100%;
 }
 
-.listenAgainCard:hover .moreIcon,
 .listenAgainCard:hover .playIcon {
     opacity: 1; 
 }

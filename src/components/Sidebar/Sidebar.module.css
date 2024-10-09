@@ -147,3 +147,11 @@
   object-fit: cover;
   min-height: 3rem;
 }
+.playlistScrollContainer {
+  max-height: 15.5rem; 
+  overflow-y: auto;  
+  width: 100%;      
+}
+.playlistScrollContainer::-webkit-scrollbar {
+  display: none;
+}

@@ -1,5 +1,4 @@
 import styles from './PlaybackBarControls.module.css'
-import Button from '../Button/Button';
 
 type Props = {
     isPlaying: boolean;
@@ -19,15 +18,17 @@ function PlaybackBarControls({isPlaying, togglePlayPause}: Props) {
                 src="./previous-icon.svg"
                 />
         </div>
-        <Button onClick={togglePlayPause} className={styles.controlButton}>
+        <div className={styles.controlButton}>
             <img
                 className={isPlaying ? styles.pauseIcon : styles.playIcon}
+                onClick={togglePlayPause}
                 title={isPlaying ? "Pause" : "Play"}
                 loading="lazy"
                 alt={isPlaying ? "Pause" : "Play"}
                 src={isPlaying ? "./pause-icon.svg" : "./play-icon.svg"}
+                role="button"
              />
-        </Button>
+        </div>
         <div className={styles.skip}>
             <img
                 className={styles.skipIcon}

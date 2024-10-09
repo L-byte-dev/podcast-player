@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import { AudioClip } from '../../Types';
-import Button from '../Button/Button';
 import Card from '../Card/Card';
 import styles from './AlbumCard.module.css';
 import { PodcastContext } from '../../context/PlayPodcastProvider';
@@ -26,7 +25,7 @@ function AlbumCard({ handleClick, filteredClips }: Props) {
             subtitle={clips.description}
             className={styles.albumCard}
           >
-            <Button
+            <div
               className={styles.pictureContainer}
             >
               <img
@@ -34,11 +33,7 @@ function AlbumCard({ handleClick, filteredClips }: Props) {
                 onClick={() => handleClick(clips)}
                 loading="lazy"
                 src={clips.channel.urls.logo_image.original}
-              />
-              <img
-                className={styles.moreIcon}
-                loading="lazy"
-                src="./more-vert-icon.svg"
+                role="button"
               />
               <img
                 className={styles.playIcon}
@@ -60,8 +55,9 @@ function AlbumCard({ handleClick, filteredClips }: Props) {
                     ? './pause-icon.svg'
                     : './play-icon.svg'
                 }
+                role="button"
               />
-            </Button>
+            </div>
           </Card>
         );
       })}
