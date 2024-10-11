@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AudioClip } from "../Types";
 
-function useFetchData(url: string, pages: number) {
+function useFetchData(url: string) {
     const [data, setData] = useState<AudioClip[]>([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
@@ -9,17 +9,31 @@ function useFetchData(url: string, pages: number) {
     useEffect(() => {
         const fetchData = async () => {
             setIsLoading(true);
+            const allData: AudioClip[] = [];
+            let page = 1;
+
             try {
-                const allData: AudioClip[] = [];
-                for (let page = 1; page <= pages; page++) {
+                while (allData.length < 62) {
                     const response = await fetch(`${url}?page=${page}`);
                     if (!response.ok) {
                         throw new Error(`Error fetching page ${page}`);
                     }
+
                     const result = await response.json();
-                    allData.push(...result.body.audio_clips);
+                    const filteredClips = result.body.audio_clips.filter((clip: AudioClip) => 
+                        clip.description && clip.channel.urls.logo_image.original
+                    );
+
+                    allData.push(...filteredClips);
+
+                    if (filteredClips.length === 0) {
+                        break;
+                    }
+
+                    page += 1;  
                 }
-                setData(allData);
+
+                setData(allData.slice(0, 62));  
             } catch (error: any) {
                 setError(error.message);
             } finally {
@@ -28,10 +42,9 @@ function useFetchData(url: string, pages: number) {
         };
 
         fetchData();
-    }, [url, pages]);
+    }, [url]);
 
     return { data, isLoading, error };
 }
 
 export default useFetchData;
-

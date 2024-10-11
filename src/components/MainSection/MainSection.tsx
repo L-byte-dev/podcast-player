@@ -16,7 +16,7 @@ import { PodcastContext } from "../../context/PlayPodcastProvider.tsx";
 const API_URL = 'https://api.audioboom.com/audio_clips';
 
 function MainSection() {
-  const { data: audioClips, isLoading } = useFetchData(API_URL, 4);
+  const { data: audioClips, isLoading } = useFetchData(API_URL);
   const podcastContext = useContext(PodcastContext);
   
   const [currentListenAgain, setCurrentListenAgain] = useState(0);
@@ -64,9 +64,6 @@ function MainSection() {
     return { start, end };
   };
 
-  const filteredClips = audioClips
-    .filter(clip => clip.description && clip.channel.urls.logo_image.original)
-
   function handleClick(clips: AudioClip) {
     podcastContext?.playPodcast({
       title: clips.title,
@@ -97,7 +94,7 @@ function MainSection() {
               </div>
               <ListenAgain 
                 handleClick={handleClick} 
-                filteredClips={filteredClips.slice(...Object.values(getPageIndices(currentListenAgain, itemsPerPage.listenAgain)))} 
+                filteredClips={audioClips.slice(...Object.values(getPageIndices(currentListenAgain, itemsPerPage.listenAgain)))} 
               />
           </section>
 
@@ -116,7 +113,7 @@ function MainSection() {
               </div>
               <ArtistCard 
                 handleClick={handleClick} 
-                filteredClips={filteredClips.slice(...Object.values(getPageIndices(currentArtist, itemsPerPage.artist, 10)))} 
+                filteredClips={audioClips.slice(...Object.values(getPageIndices(currentArtist, itemsPerPage.artist, 10)))} 
               />
           </section>
 
@@ -136,7 +133,7 @@ function MainSection() {
               </div>
               <SongCard 
                 handleClick={handleClick} 
-                filteredClips={filteredClips.slice(...Object.values(getPageIndices(currentQuickPicks, itemsPerPage.quickPicks, 20)))} 
+                filteredClips={audioClips.slice(...Object.values(getPageIndices(currentQuickPicks, itemsPerPage.quickPicks, 20)))} 
               />
           </section>
 
@@ -155,7 +152,7 @@ function MainSection() {
               </div>
               <AlbumCard 
                 handleClick={handleClick} 
-                filteredClips={filteredClips.slice(...Object.values(getPageIndices(currentRecommended, itemsPerPage.recommended, 52)))} 
+                filteredClips={audioClips.slice(...Object.values(getPageIndices(currentRecommended, itemsPerPage.recommended, 52)))} 
               />
           </section>
       </main>
